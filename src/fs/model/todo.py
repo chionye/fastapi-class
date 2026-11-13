@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
-from app.config.database import Base
+from fs.config.database import Base
 
 class Todo(Base):
     __tablename__ = "todos"
