@@ -1,13 +1,17 @@
 from fastapi import FastAPI
 
 from fs.config.database import engine, Base
-from fs.routes.todo_routes import router as todo_router
+from fs.middleware.auth_middleware import JWTAuthMiddleware
+from fs.routes import auth_routes, todo_routes
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Todo API", version="1.0.0")
 
-app.include_router(todo_router)
+app.add_middleware(JWTAuthMiddleware)
+
+app.include_router(todo_routes.router)
+app.include_router(auth_routes.router)
 
 @app.get("/")
 def health():
