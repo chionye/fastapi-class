@@ -3,6 +3,10 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
+#normal texts -> json -> texts -> string, int, boolean, lists
+#formdata -> blob {name: "rocki.png", tmp_name:"dijnidqnidqniiqjdniq", size: 345242, error: "", type: "mmpeg/pdf"}
+#header
+
 PUBLIC_PATHS = {
     "/",
     "/docs",
